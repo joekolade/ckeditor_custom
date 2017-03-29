@@ -16,7 +16,7 @@ $EM_CONF[$_EXTKEY] = [
     'category' => 'plugin',
     'author' => 'Joe Schäfer',
     'author_email' => 'joe@joekola.de',
-    'state' => 'alpha',
+    'state' => 'beta',
     'internal' => '',
     'uploadfolder' => '0',
     'createDirs' => '',
@@ -24,10 +24,12 @@ $EM_CONF[$_EXTKEY] = [
     'version' => '1.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '7.6.0-7.6.99',
+            'typo3' => '8.6.1-8.7.99',
             'rte_ckeditor' => '',
         ],
-        'conflicts' => [],
+        'conflicts' => [
+            'rtehtmlarea' => ''
+        ],
         'suggests' => [],
     ],
 ];

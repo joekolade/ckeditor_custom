@@ -1,50 +1,46 @@
-# Import basics
+# Load default processing options
 imports:
-  # instructions for the code Processing in ckeditor
-  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
-  # basic settings for rte
-  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
 
 editor:
   config:
+
     # available block level elements
     format_tags: "p;h1;h2;h3;pre"
+
     # toolbar // use button configuration if needed
     # http://ckeditor.com/latest/samples/toolbarconfigurator/index.html#basic
     toolbarGroups:
-      - { name: clipboard, groups: [clipboard, undo] }
-      - { name: editing,   groups: [find, selection, spellchecker] }
-      - { name: links }
-      - { name: insert }
-      - { name: tools }
-      - { name: table }
-      - { name: tabletools }
-      - { name: document,  groups: [ mode, document, doctools ] }
-      - { name: others }
-      # New bar
-      - "/"
-      - { name: basicstyles, groups: [ basicstyles, align, cleanup ] }
-      - { name: paragraph,   groups: [ list, indent, blocks, align, bidi ] }
-      - { name: styles }
+      - { name: 'styles', groups: [ 'styles' ] }
+      - { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
+      - { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] }
+      - { name: 'links', groups: [ 'links' ] }
+      - { name: 'clipboard', groups: [ 'clipboard', 'undo' ] }
+      - { name: 'editing', groups: [ 'spellchecker', 'find', 'selection', 'editing' ] }
+      - { name: 'insert', groups: [ 'insert' ] }
+      - { name: 'tools', groups: [ 'tools' ] }
+      - { name: 'others', groups: [ 'others' ] }
+      - { name: 'document', groups: [ 'mode', 'doctools', 'document' ] }
+
+    removeButtons: 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Find,Replace,SelectAll,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CreateDiv,BidiLtr,BidiRtl,Language,Image,Flash,PageBreak,Iframe,Smiley,Font,FontSize,About,TextColor,BGColor,Strike,Underline,Subscript,Superscript,CopyFormatting'
+
     # remove buttons explicitly
     # removeButtons:
 
-editor:
-  config:
     # CSS stylesheet
-    contentsCss: "EXT:rte_ckeditor/Resources/Public/Css/contents.css"
+    contentsCss: "EXT:ckeditor_custom/Resources/Public/Css/test.css"
+
     stylesSet:
       # block level styles
-      - { name: "Orange title H2", element: "h2", styles: { color: "orange", background: "blue" } }
-      - { name: "Orange title H3", element: "h3", attributes: { class: "my_fancy_css_class"} }
-      - { name: "Quote / Citation", element: "blockquote" }
-      - { name: "Code block", element: "code" }
+      - { name: "Colored title H2", element: "h2", styles: { color: "maroon", background: "lime" } }
+      - { name: "Orange title H3", element: "h3", attributes: { class: "custom_header_class"} }
+      #- { name: "Quote / Citation", element: "blockquote" }
+      #- { name: "Code block", element: "code" }
       # Inline styles
-      - { name: "Yellow marker", element: "span", styles: { background-color: "yellow" } }
+      - { name: "Red marker", element: "span", styles: { background-color: "red", color: "white" } }
 
-# Plugin configuration
-editor:
-  config:
+    # Plugin configuration
     removePlugins:
       - image
     extraPlugins:
@@ -57,3 +53,5 @@ editor:
       - align-center
       - align-right
       - align-justify
+  externalPlugins:
+    typo3link: { resource: "EXT:rte_ckeditor/Resources/Public/JavaScript/Plugins/typo3link.js", route: "rteckeditor_wizard_browse_links" }
